@@ -1,6 +1,8 @@
 import React from 'react'; // Used to create components
 import ReactDOM from 'react-dom'; // Used to manage the DOM
 
+const API_KEY = 'AIzaSyAJR2L0efa9BChxcQfCVm-qDIa4AjUFTmM ';
+
 // In React, components are collections of JS code that produce HTML.
 // Create a new component. This component should produce some HTML.
 const App = () => {
