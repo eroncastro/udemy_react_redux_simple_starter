@@ -1,4 +1,5 @@
 import React from 'react';
+import VideoListItem from './video_list_item';
 
 /*
   In a functional component, props is an argument.
@@ -6,11 +7,13 @@ import React from 'react';
 */
 
 const VideoList = (props) => {
-  const videos = props.videos;
+  const videoItems = props.videos.map(video => {
+    return <VideoListItem video={video} />
+  })
 
   return (
-    <ul className="col-md-4">
-      {props.videos.length}
+    <ul className="col-md-4 list-group">
+      {videoItems}
     </ul>
   );
 }
