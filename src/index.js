@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 
 const API_KEY = 'AIzaSyAJR2L0efa9BChxcQfCVm-qDIa4AjUFTmM ';
 
@@ -23,6 +24,11 @@ YTSearch({ key: API_KEY, term: 'surfboards' }, data => {
 /*
   Downwards data flow - only the most parent component in the application should
   be responsible for fetching data. For now, index is the most parente component we have.
+*/
+
+/*
+  Passing data from parent to child is very straightforward. We just have to define a property
+  on the JSX tag. This is referred in React as passing props.
 */
 
 class App extends React.Component {
@@ -41,6 +47,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
