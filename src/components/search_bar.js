@@ -27,19 +27,26 @@ import React from 'react';
   To change our component state, we use this.setState method.
 */
 
+/*
+  Controlled field - form element whose value is set by the state. So the component value will only
+  change whenever that state changes.
+*/
+
 // Class based component
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: '' }; // This is how we initialize state inside a class based component.
+    this.state = { term: 'Starting Value' }; // This is how we initialize state inside a class based component.
   }
   // Every class based component must have a render method what will return JSX.
   render() {
     // camelcase([on + [event name]])
     return (
       <div>
-        <input onChange={event => this.setState({ term: event.target.value })} />
+        <input
+          value={this.state.term}
+          onChange={event => this.setState({ term: event.target.value })} />
       </div>
     );
   }
