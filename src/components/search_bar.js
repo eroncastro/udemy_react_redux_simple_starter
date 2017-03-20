@@ -37,7 +37,7 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: 'Starting Value' }; // This is how we initialize state inside a class based component.
+    this.state = { term: 'surfboards' }; // This is how we initialize state inside a class based component.
   }
   // Every class based component must have a render method what will return JSX.
   render() {
