@@ -4,11 +4,15 @@ import VideoListItem from './video_list_item';
 /*
   In a functional component, props is an argument.
   In a class based component, props are available anywhere as "this.props".
+
+  When rendering a list, React will complain if a key prop is not provided
+  for every element of the list. It does like so inm order to be efficient
+  whenever a specific element should be re-rendered.
 */
 
 const VideoList = (props) => {
   const videoItems = props.videos.map(video => {
-    return <VideoListItem video={video} />
+    return <VideoListItem key={video.etag} video={video} />
   })
 
   return (

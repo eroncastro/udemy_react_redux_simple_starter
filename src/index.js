@@ -13,10 +13,6 @@ import VideoList from './components/video_list';
 
 const API_KEY = 'AIzaSyAJR2L0efa9BChxcQfCVm-qDIa4AjUFTmM ';
 
-YTSearch({ key: API_KEY, term: 'surfboards' }, data => {
-  console.log(data);
-});
-
 // In React, components are collections of JS code that produce HTML.
 // Create a new component. This component should produce some HTML.
 // JSX: dialect of JavaScript that looks like HTML.
