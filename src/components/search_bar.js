@@ -43,7 +43,7 @@ class SearchBar extends React.Component {
   render() {
     // camelcase([on + [event name]])
     return (
-      <div>
+      <div className="search-bar">
         <input
           value={this.state.term}
           onChange={event => this.setState({ term: event.target.value })} />
