@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 /*
   Functional component: function that returns JSX
+
   const SearchBar = () => {
     return <input />;
   };
+
+  Class-based component: ES6 class that MUST contain a render method that returns JSX.
+
+  class SearchBar extends Component {
+    render() {
+      return <input />;
+    }
+  }
 */
 
 /*
@@ -20,7 +29,7 @@ import React from 'react';
 
   Before we ever use state inside of a component, we need to initialize the state object.
   To initiliaze state, we set the property state to a plain JavaScript object inside of the
-  class constructor method. Functional components do not have state, only class based components do.
+  class constructor method. Functional components do not have state, only class-based components do.
 */
 
 /*
@@ -28,20 +37,20 @@ import React from 'react';
 */
 
 /*
-  Controlled field - form element whose value is set by the state. So the component value will only
-  change whenever that state changes.
+  Controlled field - form element whose value is set by the state. So, the component value will only
+  change whenever the state changes.
 */
 
 // Class based component
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: 'surfboards' }; // This is how we initialize state inside a class based component.
+    this.state = { term: 'surfboards' }; // This is how we initialize state inside a class-based component.
   }
-  // Every class based component must have a render method what will return JSX.
+
+  // Every class-based component must have a render method what will return JSX.
   render() {
-    // camelcase([on + [event name]])
     return (
       <div className="search-bar">
         <input
@@ -51,18 +60,19 @@ class SearchBar extends React.Component {
     );
   }
 
-  onInputChange(term) {
-    this.setState({term});
-    this.props.onSearchTermChange(term);
-  }
-
   /*
     Syntax convention for event handler:
     camelCase([handle or on] + [element name] + [event name])
+
+    onInputChange(event) {
+      console.log(event.target.value);
+    }
   */
-  // onInputChange(event) {
-  //   console.log(event.target.value);
-  // }
+
+  onInputChange(term) {
+    this.setState({ term });
+    this.props.onSearchTermChange(term);
+  }
 }
 
 export default SearchBar;
