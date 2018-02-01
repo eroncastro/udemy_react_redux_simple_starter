@@ -10,11 +10,11 @@ import VideoListItem from './video_list_item';
   whenever a specific element should be re-rendered.
 */
 
-const VideoList = (props) => {
+const VideoList = props => {
   const videoItems = props.videos.map(video => {
     return (
       <VideoListItem
-        onVideoClick={props.onVideoSelect}
+        onVideoSelect={props.onVideoSelect}
         key={video.etag}
         video={video} />
     );

@@ -1,5 +1,5 @@
 /*
-  React is a Javascript library used to produce HTML to be shown to a user
+  React is a JavaScript library used to produce HTML to be shown to a user
   in a web browser.
   React allows us to build components (or views), that are snippets of code that
   produce HTML.
@@ -13,11 +13,9 @@
 */
 
 import _ from 'lodash';
-
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
-
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
@@ -28,7 +26,7 @@ const API_KEY = 'AIzaSyAJR2L0efa9BChxcQfCVm-qDIa4AjUFTmM';
 
 /*
   Downwards data flow - only the most parent component in the application should
-  be responsible for fetching data. For now, index is the most parente component we have.
+  be responsible for fetching data. For now, index is the most parent component we have.
 */
 
 /*
@@ -37,49 +35,41 @@ const API_KEY = 'AIzaSyAJR2L0efa9BChxcQfCVm-qDIa4AjUFTmM';
 */
 
 // Create a new component. This component should produce some HTML.
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-//     this.state = {
-//       videos: [],
-//       selectedVideo: null
-//     };
+    this.state = {
+      videos: [],
+      selectedVideo: null
+    };
 
-//     this.videoSearch('surfboards');
-//   }
+    this.videoSearch('surfboards');
+  }
 
-//   videoSearch(term) {
-//     YTSearch({ key: API_KEY, term: term }, videos => {
-//       this.setState({
-//         videos: videos,
-//         selectedVideo: videos[0]
-//       });
-//     });
-//   }
+  videoSearch(term) {
+    YTSearch({ key: API_KEY, term: term }, videos => {
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
+      });
+    });
+  }
 
-//   render() {
-//     const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
+  render() {
+    const videoSearch = _.debounce(term => { this.videoSearch(term) }, 300);
 
-//     return (
-//       <div>
-//         <SearchBar onSearchTermChange={videoSearch} />
-//         <VideoDetail video={this.state.selectedVideo} />
-//         <VideoList
-//           onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-//           videos={this.state.videos} />
-//       </div>
-//     );
-//   }
-// }
-
-const App = () => {
-  return (
-    <div>
-      <SearchBar />
-    </div>
-  );
-};
+    return (
+      <div>
+        <SearchBar onSearchTermChange={videoSearch} />
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList
+          onVideoSelect={selectedVideo => this.setState({ selectedVideo })}
+          videos={this.state.videos} />
+      </div>
+    );
+  }
+}
 
 /*
   Take this component's generated HTML and put it on the page (in the DOM).

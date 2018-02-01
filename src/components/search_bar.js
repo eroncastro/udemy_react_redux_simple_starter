@@ -63,10 +63,6 @@ class SearchBar extends Component {
   /*
     Syntax convention for event handler:
     camelCase([handle or on] + [element name] + [event name])
-
-    onInputChange(event) {
-      console.log(event.target.value);
-    }
   */
 
   onInputChange(term) {
